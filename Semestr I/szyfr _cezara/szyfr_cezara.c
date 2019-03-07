@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define max 10
+#define max 20
 
 void wypelnij_tab(char tab[]){
 int i;
