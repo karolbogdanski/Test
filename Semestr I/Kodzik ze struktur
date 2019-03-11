@@ -1,0 +1,103 @@
+#include <iostream>
+
+using namespace std;
+
+struct node {
+	int val;
+	node *next;
+
+};
+
+void put(node *&stack,int x) {
+	node *p = new node;
+
+	p->val = x;
+	p->next = stack;
+	stack= p;
+
+}
+
+void showtop(node*stack) {
+	
+	if (stack != NULL)
+		cout << stack->val << "->";
+}
+
+
+void pop(node*&stack) {
+	if (stack != NULL) {
+	node*p = stack;
+	stack = stack->next;
+	delete p;
+	}
+}
+
+bool isEmpty(node*stack) {
+	if (stack != NULL)
+		return false;
+	else
+		return true;
+}
+
+void enqueue(node *&Q, node *&T, int x) {
+
+	if (Q == NULL) {
+		Q = new node;
+		Q->val = x;
+		Q->next = NULL;
+		T = Q;
+	}
+}
+
+void enqueue2(node *&Q, node *&T, int x) {
+
+	node *p = new node;
+	p->val = x;
+	p->next = NULL;
+
+	if (Q == NULL) {
+		Q = p;
+		T = Q;
+	}
+	else {
+		T->next = p;
+		T = p;
+	}
+}
+
+void dequeue(node *&Q, node *&T) {
+	if (Q != NULL){
+		node *p = Q;
+		Q = Q->next;
+		delete p;
+		
+		if (Q == NULL)
+			T = NULL;
+	}
+}
+
+void showtop2(node *Q) {
+
+
+}
+
+int main() {
+
+	//node*stack = NULL;
+	//put(stack, 5);
+	//showtop(stack);
+
+	node *Q = NULL;
+	node *T = NULL;
+	
+	enqueue(Q, T, 21);
+	cout << Q->val << endl;
+	cout << T->val << endl;
+	
+	enqueue(Q, T, 65);
+	cout << Q->val << endl;
+	cout << T->val << endl;
+
+	system("PAUSE");
+	return 0;
+}
